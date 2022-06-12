@@ -12,3 +12,4 @@ git pull && git add . && git commit -m "." && git push
 # URL del proyecto git
 https://github.com/milagro20/proyecto-final-calidad-del-aire
 # URL del proyecto en streamlit cloud
+https://share.streamlit.io/milagro20/proyecto-final-calidad-del-aire/main
