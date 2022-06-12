@@ -21,5 +21,9 @@ cd entorno-virtual
 cd Scripts
 activate
 cd ../..
+
 # Generacion del requeriments.txt
 pip freeze > requirements.txt
+
+# Levantar streamlit
+streamlit run streamlit_app.py
