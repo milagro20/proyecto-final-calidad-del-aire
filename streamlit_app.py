@@ -2,7 +2,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from xlrd import read_excel
 
 # Carga de datos (Todos los que vayas a utilizar)
 link_jul_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_julio.xlsx"
