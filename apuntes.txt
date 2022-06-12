@@ -1,6 +1,12 @@
-# Para clonar
+# Configurar la llave
+# Setear datos
+git config --global user.email "milagros.marcelo@upch.pe"
+git config --global user.name "Milagros Marcelo"
+
+# Para clonar (una sola vez)
 git clone git@github.com:milagro20/proyecto-final-calidad-del-aire.git
-# Para jalar y subir cambios
+# Para jalar y subir cambios (cada vez que haces un cambio importante)
+cd 'ruta-del-proyecto'
 git pull && git add . && git commit -m "." && git push
 
 # URL del proyecto git
