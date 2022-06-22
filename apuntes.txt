@@ -15,15 +15,20 @@ https://github.com/milagro20/proyecto-final-calidad-del-aire
 https://share.streamlit.io/milagro20/proyecto-final-calidad-del-aire/main
 
 # Creacion de entornos virtuales
-python -m venv entorno-virtual
+python -m venv env
 # Activar entorno virtual, para que todo lo que se instale se hgaga sobre ese entorno, no sobre tu pc
 cd entorno-virtual
 cd Scripts
 activate
 cd ../..
 
+.\env\Scripts\activate
+
 # Generacion del requeriments.txt
 pip freeze > requirements.txt
+
+pip install pipreqs
+pipreqs --encoding=utf8 --force
 
 # Levantar streamlit
 streamlit run streamlit_app.py
