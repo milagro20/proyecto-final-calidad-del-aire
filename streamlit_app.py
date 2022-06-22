@@ -10,12 +10,13 @@ link_set_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_
 link_oct_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_octubre.xlsx"
 link_nov_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/6_Monitoreo_Noviembre.xlsx"
 link_dic_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/7_Monitoreo_Diciembre.xlsx"
+
 link_ene_2021 = "https://www.datosabiertos.gob.pe/sites/default/files/8_Monitoreo_Enero_2021.xlsx"
 link_feb_2021 = "https://www.datosabiertos.gob.pe/sites/default/files/9_Monitoreo_Febrero_2021.xlsx"
 link_mar_2021 = "https://www.datosabiertos.gob.pe/sites/default/files/10_Monitoreo_Marzo_2021.xlsx"
 
-df_jul_2020 = pd.read_excel("https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_julio.xlsx")
-df_ago_2020 = pd.read_excel("https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_agosto.xlsx")
+df_jul_2020 = pd.read_excel(link_jul_2020)
+df_ago_2020 = pd.read_excel(link_ago_2020)
 df_set_2020 = pd.read_excel(link_set_2020)
 df_oct_2020 = pd.read_excel(link_oct_2020)
 df_nov_2020 = pd.read_excel(link_nov_2020)
