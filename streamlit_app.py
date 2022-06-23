@@ -24,28 +24,39 @@ link_mar_2021 = "https://www.datosabiertos.gob.pe/sites/default/files/10_Monitor
 
 
 # Limpiar (eliminar row con null, y replace de data duplicada de columnas (Transporte, transporte, Tranportes))
-
 # Generacion de columnas adicionales fecha (18-02-2019) -> anho (2019) y mes (02)
 
 #
 
-st.title('Analisis de datos de ...')
+st.title('Analisis de datos de la calidad de aire QAIRA - Municipalidad de Miraflores')
 st.markdown("""
-### 1. De que trata el proyecto?
-Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,
-cuando un impresor (N. del T. persona que se dedica a la imprenta)
-desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
-No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos.
+###
+1. Integrantes:
+ * Flores Jamjachi, Alejandra Nicole
+ * Marcelo Travezaño, Milagros Angela
+ * Vega Perez, Zaraí Jhonmy
+ * Vilca Benites, Karla Mishell
+ * Zimic Sheen, Alen Mirko
 
-Los datos dde obtuvieron de [https://google.com](https://google.com)
+2. ¿De qué trata el proyecto?
+Este proyecto tiene como principal objetivo la comparación de los datos obtenidos en el
+2020 y 2021, en el distrito de Miraflores, sobre los contaminantes encontrados.
+Gracias a esto, se pudieron generar gráficos de barras en los cuales se puede apreciar la
+concentración mensual en (ug/m3) de contaminantes como el monóxido de carbono (CO), ácido
+sulfhídrico (H2S), dióxido de nitrógeno (NO2), ozono (O3), material particulado PM10 y PM2.5,
+y dióxido de azufre SO2. 
 
+
+Los datos dde obtuvieron de [https://www.datosabiertos.gob.pe/dataset/monitoreo-de-calidad-de-aire-qaira%C2%A0-municipalidad-de-miraflores](https://www.datosabiertos.gob.pe/dataset/monitoreo-de-calidad-de-aire-qaira%C2%A0-municipalidad-de-miraflores)
+
+¡EMPIEZA YA!
 """)
 
 # Seleccion de dataframe
 lista_anhos = [2020,2021]
-opcion_anho = st.selectbox('Selecciona un anho', lista_anhos)
+opcion_anho = st.selectbox('Selecciona un año', lista_anhos)
 df = pd.DataFrame()
+
 if opcion_anho == 2020:
       lista_meses = ['Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre']
       opcion_mes = st.selectbox('Selecciona un mes', lista_meses)
@@ -59,8 +70,15 @@ if opcion_anho == 2020:
             df = pd.read_excel(link_oct_2020)
       elif opcion_mes == lista_meses[4]:
             df = pd.read_excel(link_nov_2020)
+            df = df.dropna()
+            indexNames = df[ df['SO2 (ug/m3)'] == '-' ].index
+            df.drop(indexNames , inplace=True)
+            df['SO2 (ug/m3)'] = df['SO2 (ug/m3)'].astype(float)
       elif opcion_mes == lista_meses[5]:
             df = pd.read_excel(link_dic_2020)
+            indexNames = df[ df['H2S (ug/m3)'] == '-' ].index
+            df.drop(indexNames , inplace=True)
+            df['H2S (ug/m3)'] = df['H2S (ug/m3)'].astype(float)
 else:
       lista_meses = ['Enero','Febrero','Marzo']
       opcion_mes = st.selectbox('Selecciona un mes', lista_meses)
@@ -70,6 +88,7 @@ else:
             df = pd.read_excel(link_feb_2021)
       elif opcion_mes == lista_meses[2]:
             df = pd.read_excel(link_mar_2021)
+            df = df.dropna()
 
 num_filas = len(df.axes[0])
 st.write('Se encontraron', num_filas,'registros')
@@ -79,4 +98,3 @@ st.dataframe(df)
 #JULIO 2020
 df_contaminantes = df.iloc[:,6:12]
 st.bar_chart(pd.DataFrame(df_contaminantes.mean()))
-
