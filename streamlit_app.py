@@ -6,7 +6,7 @@ import numpy as np
 #from pandas._libs import index
 import matplotlib
 import matplotlib.pyplot as plt
-
+import gdown
 # Carga de datos (Todos los que vayas a utilizar)
 link_jul_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_julio.xlsx"
 link_ago_2020 = "https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_agosto.xlsx"
